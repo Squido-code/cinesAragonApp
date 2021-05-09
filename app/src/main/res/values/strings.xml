@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Videojuegos</string>
+    <string name="app_name">CinesAragonApp</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="ficha_t_cnica">Ficha Técnica</string>

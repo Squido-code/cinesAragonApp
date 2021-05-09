@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.guillermo.videojuegos">
+    package="com.guillermo.cinesAragonApp">
 
     <uses-permission android:name="android.permission.INTERNET" />
 
@@ -11,9 +11,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Videojuegos">
-        <activity android:name=".fichaDescriptivaBottomNavigation.view.ListaBaseFragment" />
-        <activity android:name=".listaVideojuegos.view.ListaVideojuegos" />
-        <activity android:name=".MainActivity">
+        <activity android:name="com.guillermo.cinesAragonApp.fichaDescriptivaBottomNavigation.view.ListaBaseFragment" />
+        <activity android:name="com.guillermo.cinesAragonApp.listaPeliculas.view.ListaPeliculas" />
+        <activity android:name="com.guillermo.cinesAragonApp.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

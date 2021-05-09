@@ -7,7 +7,7 @@ android {
     buildToolsVersion "30.0.2"
 
     defaultConfig {
-        applicationId "com.guillermo.videojuegos"
+        applicationId "com.guillermo.cinesAragonApp"
         minSdkVersion 22
         targetSdkVersion 30
         versionCode 1

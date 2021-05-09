@@ -37,3 +37,5 @@ local.properties
 /.gradle/6.5/fileHashes/resourceHashesCache.bin
 /.gradle/checksums/sha1-checksums.bin
 /.gradle/6.5/javaCompile/taskHistory.bin
+/app/src/androidTest/java/com/guillermo/cinesAragonApp/ExampleInstrumentedTest.java
+/app/src/test/java/com/guillermo/cinesAragonApp/ExampleUnitTest.java
