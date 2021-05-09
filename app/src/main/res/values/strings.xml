@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Videojuegos</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="ficha_t_cnica">Ficha Técnica</string>
+    <string name="mas_informaci_n">Mas información</string>
+    <string name="descripci_n">descripción</string>
+    <string name="m_s_info">Más info</string>
+</resources>

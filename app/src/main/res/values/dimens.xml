@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="height_with_weight">0dp</dimen>
+    <dimen name="height_videojuego_list_photo">94dp</dimen>
+    <dimen name="image_row_marginstart">0dp</dimen>
+    <dimen name="image_row_margintop">6dp</dimen>
+    <dimen name="image_row_marginEnd">0dp</dimen>
+    <dimen name="image_row_marginBottom">31dp</dimen>
+    <dimen name="image_row_padding">14dp</dimen>
+    <dimen name="row_textView_marginTop">101dp</dimen>
+    <dimen name="row_textView_marginBottom">0dp</dimen>
+    <dimen name="row_textView_TextSize">20sp</dimen>
+    <dimen name="row_card_CornerRadius">12dp</dimen>
+    <dimen name="row_card_cardElevation">4dp</dimen>
+</resources>
