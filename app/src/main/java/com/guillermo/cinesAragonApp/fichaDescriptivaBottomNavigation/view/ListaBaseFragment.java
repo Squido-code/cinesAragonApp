@@ -3,7 +3,6 @@ package com.guillermo.cinesAragonApp.fichaDescriptivaBottomNavigation.view;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
@@ -12,23 +11,18 @@ import androidx.fragment.app.FragmentTransaction;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.guillermo.cinesAragonApp.R;
 import com.guillermo.cinesAragonApp.beans.Ficha;
-import com.guillermo.cinesAragonApp.fichaDescriptivaBottomNavigation.contract.ContratoFichaDescriptivaFragments;
 import com.guillermo.cinesAragonApp.fichaDescriptivaBottomNavigation.fragments.Fragment1;
 import com.guillermo.cinesAragonApp.fichaDescriptivaBottomNavigation.fragments.Fragment2;
-import com.guillermo.cinesAragonApp.fichaDescriptivaBottomNavigation.presenter.PresenterFichaFragments;
 
-public class ListaBaseFragment extends AppCompatActivity implements ContratoFichaDescriptivaFragments.View {
+
+public class ListaBaseFragment extends AppCompatActivity {
 
     private static final String TAG = ListaBaseFragment.class.getSimpleName();
 
     private BottomNavigationView mBottomNavigationView;
 
     private FragmentManager fragmentManager;
-
-
     private Ficha ficha;
-
-    private PresenterFichaFragments presenterFichaFragments;
 
     private Fragment1 fragment1;
     private Fragment2 fragment2;
@@ -40,10 +34,10 @@ public class ListaBaseFragment extends AppCompatActivity implements ContratoFich
         setContentView(R.layout.activity_lista_base_fragment);
         getIncomingIntent();
         fragmentManager = getSupportFragmentManager();
-        presenterFichaFragments = new PresenterFichaFragments(this, this);
+        fragment1 = Fragment1.newInstance(ficha);
+        fragment2 = Fragment2.newInstance(ficha);
         mBottomNavigationView = findViewById(R.id.navigationView);
         initBottomNavigation();
-
     }
 
     private void initBottomNavigation() {
@@ -79,18 +73,18 @@ public class ListaBaseFragment extends AppCompatActivity implements ContratoFich
         transaction.commit();
     }
 
-    @Override
-    public void success(Ficha ficha) {
-        this.ficha = ficha;
-        fragment1 = Fragment1.newInstance(ficha);
-        fragment2 = Fragment2.newInstance(ficha);
-        showFragment1();
-    }
-
-    @Override
-    public void error(String mensage) {
-        Toast.makeText(this, "error al mostrar los datos", Toast.LENGTH_SHORT).show();
-    }
+//    @Override
+//    public void success(Ficha ficha) {
+//        this.ficha = ficha;
+//        fragment1 = Fragment1.newInstance(ficha);
+//        fragment2 = Fragment2.newInstance(ficha);
+//        showFragment1();
+//    }
+//
+//    @Override
+//    public void error(String mensage) {
+//        Toast.makeText(this, "error al mostrar los datos", Toast.LENGTH_SHORT).show();
+//    }
 
     private void getIncomingIntent() {
         Intent intent = getIntent();
