@@ -16,6 +16,17 @@ public class Pelicula {
     private String votos;
     private String genero;
     private ArrayList<Horarios> horarios;
+
+    public String horariosToString() {
+        StringBuilder builder = new StringBuilder();
+        for (Horarios hora :
+                horarios) {
+            builder.append(hora.getHora());
+            builder.append(" ");
+        }
+
+        return "Sesiones: " + builder.toString();
+    }
 }
 
 

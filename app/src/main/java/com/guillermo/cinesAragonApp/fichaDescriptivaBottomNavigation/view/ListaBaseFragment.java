@@ -1,5 +1,6 @@
 package com.guillermo.cinesAragonApp.fichaDescriptivaBottomNavigation.view;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Toast;
@@ -24,7 +25,6 @@ public class ListaBaseFragment extends AppCompatActivity implements ContratoFich
 
     private FragmentManager fragmentManager;
 
-    private String fichaId;
 
     private Ficha ficha;
 
@@ -41,7 +41,6 @@ public class ListaBaseFragment extends AppCompatActivity implements ContratoFich
         getIncomingIntent();
         fragmentManager = getSupportFragmentManager();
         presenterFichaFragments = new PresenterFichaFragments(this, this);
-        presenterFichaFragments.getFicha(fichaId);
         mBottomNavigationView = findViewById(R.id.navigationView);
         initBottomNavigation();
 
@@ -94,9 +93,16 @@ public class ListaBaseFragment extends AppCompatActivity implements ContratoFich
     }
 
     private void getIncomingIntent() {
-        boolean isComplete = getIntent().hasExtra("juego_id");
-        if (isComplete) {
-            fichaId = getIntent().getStringExtra("juego_id");
+        Intent intent = getIntent();
+        Bundle extras = getIntent().getExtras();
+        if (extras != null) {
+            ficha = Ficha.builder().nombre(extras.getString("nombre"))
+                    .sinopsis(extras.getString("sinopsis"))
+                    .cartel(extras.getString("cartel"))
+                    .duracion(extras.getString("duracion"))
+                    .fecha_Estreno(extras.getString("fecha_Estreno"))
+                    .genero(extras.getString("genero"))
+                    .build();
         }
     }
 }

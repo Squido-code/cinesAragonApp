@@ -2,6 +2,7 @@ package com.guillermo.cinesAragonApp.adapter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -42,13 +43,17 @@ public class PeliculaAdapter extends RecyclerView.Adapter<PeliculaAdapter.Pelicu
         Pelicula pelicula = listaPelicula.get(position);
         holder.nombre.setText(pelicula.getTitulo());
         Picasso.get().load(pelicula.getCartel()).into(holder.imagen);
-        holder.imagen.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(context, ListaBaseFragment.class);
-                intent.putExtra("pelicula_id", pelicula.getId());
-                context.startActivity(intent);
-            }
+        holder.imagen.setOnClickListener(view -> {
+            Intent intent = new Intent(context, ListaBaseFragment.class);
+            Bundle bundle = new Bundle();
+            bundle.putString("nombre", pelicula.getTitulo());
+            bundle.putString("sinopsis", pelicula.getSinopsis());
+            bundle.putString("cartel", pelicula.getCartel());
+            bundle.putString("duracion", pelicula.getDuracion());
+            bundle.putString("fecha_Estreno", pelicula.getFecha_Estreno());
+            bundle.putString("genero", pelicula.getGenero());
+            intent.putExtras(bundle);
+            context.startActivity(intent);
         });
     }
 

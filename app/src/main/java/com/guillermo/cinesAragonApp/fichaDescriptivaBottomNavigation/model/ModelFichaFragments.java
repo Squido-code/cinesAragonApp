@@ -23,6 +23,7 @@ public class ModelFichaFragments implements ContratoFichaDescriptivaFragments.Mo
         ApiClient apiClient = new ApiClient(context);
         Call<Ficha> batch = apiClient.getFicha(idFicha);
 
+
         batch.enqueue(new Callback<Ficha>() {
             @Override
             public void onResponse(Call<Ficha> call, Response<Ficha> response) {
