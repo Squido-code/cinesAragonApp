@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 public interface ContratoListaPeliculas {
     interface View {
-        void success(ArrayList<Pelicula> juegos);
+        void success(ArrayList<Pelicula> peliculas);
 
         void error(String mensage);
 
@@ -18,9 +18,9 @@ public interface ContratoListaPeliculas {
     }
 
     interface Model {
-        void getjuegosWS(OnLstJuegosListener onLstJuegosListener);
+        void getPeliculasWS(OnLstJuegosListener onLstJuegosListener);
 
-        void getjuegosfilterWS(OnLstJuegosListener onLstJuegosListener, String filtro);
+        void getPeliculasfilterWS(OnLstJuegosListener onLstJuegosListener, String filtro);
 
         /*Reactivo*/
         interface OnLstJuegosListener {

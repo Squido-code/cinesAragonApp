@@ -10,11 +10,12 @@ import retrofit2.Call;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
+import static com.guillermo.cinesAragonApp.utils.Constants.BASE_URL;
+
 public class ApiClient {
-    private static final String BASE_URL = "http://localhost:8080";
     private final Retrofit retrofit;
     private final Context context;
-    PeliculasInterface service;
+    private final PeliculasInterface service;
 
     public ApiClient(Context context) {
         this.context = context;
@@ -25,11 +26,11 @@ public class ApiClient {
         service = retrofit.create(PeliculasInterface.class);
     }
 
-    public Call<List<Pelicula>> getVideojuegos() {
+    public Call<List<Pelicula>> getPeliculas() {
         return service.getPeliculas();
     }
 
-    public Call<List<Pelicula>> getVideojuegosFiltered(String genre) {
+    public Call<List<Pelicula>> getPeliculasFiltered(String genre) {
         return service.getPeliculasByGenero(genre);
     }
 

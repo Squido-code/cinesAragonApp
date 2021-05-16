@@ -25,7 +25,7 @@ public interface PeliculasInterface {
     Call<Pelicula> getPeliculasByTitulo(@Query("titulo") String titulo);
 
     @GET("http://localhost:8080/sesiones/{id}")
-    Call<Horarios> getSesiones(@Path("id") String id);
+    Call<List<Horarios>> getSesiones(@Path("id") String id);
 
     @GET("http://localhost:8080/orden")
     Call<List<Pelicula>> getPeliculasOrden();

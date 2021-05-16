@@ -32,7 +32,7 @@ public class PresentadorListaPeliculas implements ContratoListaPeliculas.Present
         filtroId.put("Estrategia", "10");
         if (isFiltrado) {
             Log.d(TAG, "[getJuegos] isFiltrado");
-            modelListaVideojuegos.getjuegosfilterWS(new ContratoListaPeliculas.Model.OnLstJuegosListener() {
+            modelListaVideojuegos.getPeliculasfilterWS(new ContratoListaPeliculas.Model.OnLstJuegosListener() {
                 @Override
                 public void onResolve(ArrayList<Pelicula> juegos) {
                     Log.d(TAG, "[getJuegos] onResolve");
@@ -47,7 +47,7 @@ public class PresentadorListaPeliculas implements ContratoListaPeliculas.Present
             }, filtroId.get(filtro));
         } else {
             Log.d(TAG, "[getjuegosWS]");
-            modelListaVideojuegos.getjuegosWS(new ContratoListaPeliculas.Model.OnLstJuegosListener() {
+            modelListaVideojuegos.getPeliculasWS(new ContratoListaPeliculas.Model.OnLstJuegosListener() {
 
                 @Override
                 public void onResolve(ArrayList<Pelicula> juegos) {
