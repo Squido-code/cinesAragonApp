@@ -12,21 +12,21 @@ import retrofit2.http.Path;
 import retrofit2.http.Query;
 
 public interface PeliculasInterface {
-    @GET("http://localhost:8080/peliculas")
+    @GET("peliculas")
     Call<List<Pelicula>> getPeliculas();
 
-    @GET("http://localhost:8080/peliculas/{id}")
+    @GET("peliculas/{id}")
     Call<Pelicula> getPeliculabyId(@Path("id") String id);
 
-    @GET("http://localhost:8080/genero/{id}")
+    @GET("genero/{id}")
     Call<List<Pelicula>> getPeliculasByGenero(@Path("id") String id);
 
-    @GET("http://localhost:8080/pelicula")
+    @GET("pelicula")
     Call<Pelicula> getPeliculasByTitulo(@Query("titulo") String titulo);
 
-    @GET("http://localhost:8080/sesiones/{id}")
+    @GET("sesiones/{id}")
     Call<List<Horarios>> getSesiones(@Path("id") String id);
 
-    @GET("http://localhost:8080/orden")
+    @GET("orden")
     Call<List<Pelicula>> getPeliculasOrden();
 }
