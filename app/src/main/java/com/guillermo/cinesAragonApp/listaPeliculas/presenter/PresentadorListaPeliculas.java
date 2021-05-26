@@ -22,16 +22,16 @@ public class PresentadorListaPeliculas implements ContratoListaPeliculas.Present
     }
 
     @Override
-    public void getJuegos(Boolean isFiltrado) {
-        Log.d(TAG, "[getJuegos]");
+    public void getPeliculas(Boolean isFiltrado) {
+        Log.d(TAG, "[getPeliculas]");
         //creamos hasmap para connvertir el filtro en una id entendible para la API
         HashMap<String, String> filtroId = new HashMap<>();
-        filtroId.put("acción", "4");
-        filtroId.put("aventura", "3");
-        filtroId.put("RPG", "5");
-        filtroId.put("Estrategia", "10");
+        filtroId.put("acción", "1");
+        filtroId.put("aventura", "2");
+        filtroId.put("Terror", "3");
+        filtroId.put("Ciencia ficcion", "4");
         if (isFiltrado) {
-            Log.d(TAG, "[getJuegos] isFiltrado");
+            Log.d(TAG, "[getPeliculas] isFiltrado");
             modelListaVideojuegos.getPeliculasfilterWS(new ContratoListaPeliculas.Model.OnLstJuegosListener() {
                 @Override
                 public void onResolve(ArrayList<Pelicula> juegos) {
@@ -46,18 +46,18 @@ public class PresentadorListaPeliculas implements ContratoListaPeliculas.Present
                 }
             }, filtroId.get(filtro));
         } else {
-            Log.d(TAG, "[getjuegosWS]");
+            Log.d(TAG, "[getPeliculasWS]");
             modelListaVideojuegos.getPeliculasWS(new ContratoListaPeliculas.Model.OnLstJuegosListener() {
 
                 @Override
                 public void onResolve(ArrayList<Pelicula> juegos) {
-                    Log.d(TAG, "[getjuegosWS] onResolve");
+                    Log.d(TAG, "[getPeliculasWS] onResolve");
                     vista.success(juegos);
                 }
 
                 @Override
                 public void onReject(String error) {
-                    Log.d(TAG, "[getjuegosWS] onResolve");
+                    Log.d(TAG, "[getPeliculasWS] onResolve");
                     vista.error("Error al tratar los datos");
                 }
             });

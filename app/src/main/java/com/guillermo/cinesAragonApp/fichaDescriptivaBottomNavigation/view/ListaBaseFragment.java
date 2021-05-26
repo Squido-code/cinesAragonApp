@@ -38,6 +38,7 @@ public class ListaBaseFragment extends AppCompatActivity {
         fragment2 = Fragment2.newInstance(ficha);
         mBottomNavigationView = findViewById(R.id.navigationView);
         initBottomNavigation();
+        showFragment1();
     }
 
     private void initBottomNavigation() {

@@ -21,17 +21,17 @@ public class MainActivity extends AppCompatActivity {
         Intent navegar = new Intent(
                 getBaseContext(), ListaPeliculas.class);
         startActivity(navegar);
-        handler.postDelayed(
-                new Runnable() {
-                    @Override
-                    public void run() {
-                        // Cargar la 2ª pantalla
-                        Intent navegar = new Intent(
-                                getBaseContext(), ListaPeliculas.class);
-                        startActivity(navegar);
-                    }
-                }
-                , 4000
-        );
+//        handler.postDelayed(
+//                new Runnable() {
+//                    @Override
+//                    public void run() {
+//                        // Cargar la 2ª pantalla
+//                        Intent navegar = new Intent(
+//                                getBaseContext(), ListaPeliculas.class);
+//                        startActivity(navegar);
+//                    }
+//                }
+//                , 4000
+//        );
     }
 }

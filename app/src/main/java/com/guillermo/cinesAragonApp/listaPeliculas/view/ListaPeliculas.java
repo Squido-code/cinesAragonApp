@@ -25,7 +25,7 @@ import java.util.ArrayList;
 
 public class ListaPeliculas extends AppCompatActivity implements ContratoListaPeliculas.View {
     private static final String TAG = ListaPeliculas.class.getSimpleName();
-    private PresentadorListaPeliculas presentadorListaVideojuegos;
+    private PresentadorListaPeliculas presentadorListaPeliculas;
     private RecyclerView recyclerView;
     private RecyclerView.LayoutManager layoutManager;
 
@@ -34,8 +34,8 @@ public class ListaPeliculas extends AppCompatActivity implements ContratoListaPe
         super.onCreate(savedInstanceState);
         this.requestWindowFeature(getWindow().FEATURE_NO_TITLE);
         setContentView(R.layout.activity_lista_pelicula);
-        presentadorListaVideojuegos = new PresentadorListaPeliculas(this, this);
-        presentadorListaVideojuegos.getJuegos(false);
+        presentadorListaPeliculas = new PresentadorListaPeliculas(this, this);
+        presentadorListaPeliculas.getPeliculas(false);
         filtrado();
     }
 
@@ -63,7 +63,7 @@ public class ListaPeliculas extends AppCompatActivity implements ContratoListaPe
         Log.d(TAG, "[filtrado]");
         final AutoCompleteTextView spinner = findViewById(R.id.spinnerTextView);
 
-        String[] generos = new String[]{"todos", "acción", "aventura", "RPG", "Estrategia"};
+        String[] generos = new String[]{"todos", "acción", "aventura", "Terror", "Ciencia ficcion"};
         ArrayAdapter<String> adapterFiltro = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, generos);
         adapterFiltro.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapterFiltro);
@@ -77,11 +77,11 @@ public class ListaPeliculas extends AppCompatActivity implements ContratoListaPe
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                if ("todos".equals(s)) {
-                    presentadorListaVideojuegos.getJuegos(false);
+                if ("todos".contentEquals(s)) {
+                    presentadorListaPeliculas.getPeliculas(false);
                 } else {
-                    presentadorListaVideojuegos.setFiltro(String.valueOf(s));
-                    presentadorListaVideojuegos.getJuegos(true);
+                    presentadorListaPeliculas.setFiltro(String.valueOf(s));
+                    presentadorListaPeliculas.getPeliculas(true);
                 }
             }
 
@@ -90,27 +90,7 @@ public class ListaPeliculas extends AppCompatActivity implements ContratoListaPe
 
             }
         });
-        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView adapter, View v, int i, long lng) {
-                String selecteditem = adapter.getItemAtPosition(i).toString();
-                String seleccion = selecteditem;
-                switch (seleccion) {
-                    case "todos":
-                        presentadorListaVideojuegos.getJuegos(false);
-                        break;
-                    default:
-                        presentadorListaVideojuegos.setFiltro(selecteditem);
-                        presentadorListaVideojuegos.getJuegos(true);
-                        break;
-                }
-            }
 
-            @Override
-            public void onNothingSelected(AdapterView<?> parentView) {
-                return;
-            }
-        });
     }
 
 }

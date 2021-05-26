@@ -13,7 +13,7 @@ public interface ContratoListaPeliculas {
     }
 
     interface Presenter {
-        void getJuegos(Boolean isFiltrado);
+        void getPeliculas(Boolean isFiltrado);
 
     }
 
