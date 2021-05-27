@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<com.google.android.material.textfield.TextInputLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/spinner"
+    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/height_with_weight"
+    android:layout_weight="10"
+    android:background="#779CDFD5"
+    android:hint="Genre filter"
+    android:paddingLeft="@dimen/image_row_padding"
+    android:paddingRight="@dimen/image_row_padding"
+    app:boxBackgroundColor="#FFFFFF"
+    app:boxBackgroundMode="outline">
+
+    <androidx.appcompat.widget.AppCompatAutoCompleteTextView
+        android:id="@+id/spinnerTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#FFFFFF"
+        android:clickable="true"
+        android:editable="false"
+        tools:ignore="KeyboardInaccessibleWidget" />
+</com.google.android.material.textfield.TextInputLayout>

@@ -4,8 +4,6 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
-import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Toast;
@@ -14,6 +12,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.material.navigation.NavigationView;
 import com.guillermo.cinesAragonApp.R;
 import com.guillermo.cinesAragonApp.adapter.PeliculaAdapter;
 import com.guillermo.cinesAragonApp.beans.Pelicula;
@@ -28,15 +27,17 @@ public class ListaPeliculas extends AppCompatActivity implements ContratoListaPe
     private PresentadorListaPeliculas presentadorListaPeliculas;
     private RecyclerView recyclerView;
     private RecyclerView.LayoutManager layoutManager;
+    private NavigationView navigationView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         this.requestWindowFeature(getWindow().FEATURE_NO_TITLE);
-        setContentView(R.layout.activity_lista_pelicula);
+        setContentView(R.layout.lista_peliculas2);
+        navigationView = (NavigationView) findViewById(R.id.nav_view);
         presentadorListaPeliculas = new PresentadorListaPeliculas(this, this);
         presentadorListaPeliculas.getPeliculas(false);
-        filtrado();
+//        filtrado();
     }
 
 
@@ -61,7 +62,8 @@ public class ListaPeliculas extends AppCompatActivity implements ContratoListaPe
 
     public void filtrado() {
         Log.d(TAG, "[filtrado]");
-        final AutoCompleteTextView spinner = findViewById(R.id.spinnerTextView);
+
+        final AutoCompleteTextView spinner = (AutoCompleteTextView) navigationView.getMenu().findItem(R.id.menu1);
 
         String[] generos = new String[]{"todos", "acción", "aventura", "Terror", "Ciencia ficcion"};
         ArrayAdapter<String> adapterFiltro = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, generos);
