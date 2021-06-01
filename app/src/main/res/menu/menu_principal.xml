@@ -1,9 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
-    <item
-        android:id="@+id/menu1"
-        android:icon="@android:drawable/ic_menu_share"
-        android:title=""
-        app:actionLayout="@layout/layout_filtro_genero" />
+    <item android:title="@string/titulo_menu_principal">
+        <menu>
+            <item
+                android:id="@+id/menu1"
+                android:title="@string/ordenar_por_voto"
+                app:actionViewClass="android.widget.CheckBox" />
+            <item
+                android:id="@+id/menu2"
+                android:title="@string/filtro_por_genero"
+                app:actionViewClass="android.widget.Spinner" />
+
+            <item
+                android:id="@+id/menu3"
+                android:title="buscar título:"
+                app:actionViewClass="android.widget.SearchView"
+                app:showAsAction="always" />
+        </menu>
+    </item>
 </menu>

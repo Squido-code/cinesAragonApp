@@ -6,4 +6,9 @@
     <string name="mas_informaci_n">Mas información</string>
     <string name="descripci_n">descripción</string>
     <string name="m_s_info">Más info</string>
+    <string name="titulo_menu_principal">Opciones</string>
+    <string name="ordenar_por_voto">Ordenar por voto</string>
+    <string name="filtro_por_genero">género:</string>
+    <string name="drawer_opened">abierto</string>
+    <string name="drawer_closed">cerrado</string>
 </resources>
