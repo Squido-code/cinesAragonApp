@@ -42,6 +42,8 @@ public class PeliculaAdapter extends RecyclerView.Adapter<PeliculaAdapter.Pelicu
     public void onBindViewHolder(@NonNull PeliculaViewHolder holder, int position) {
         Pelicula pelicula = listaPelicula.get(position);
         holder.nombre.setText(pelicula.getTitulo());
+        holder.precio.setText("Precio: " + pelicula.getPrecio() + " €");
+        holder.sesiones.setText(pelicula.horariosToString());
         Picasso.get().load(pelicula.getCartel()).into(holder.imagen);
         holder.imagen.setOnClickListener(view -> {
             Intent intent = new Intent(context, ListaBaseFragment.class);
@@ -65,11 +67,16 @@ public class PeliculaAdapter extends RecyclerView.Adapter<PeliculaAdapter.Pelicu
     public static class PeliculaViewHolder extends RecyclerView.ViewHolder {
         public ImageView imagen;
         public TextView nombre;
+        public TextView precio;
+        public TextView sesiones;
 
         public PeliculaViewHolder(View v) {
             super(v);
             imagen = v.findViewById(R.id.imagenPelicula);
             nombre = v.findViewById(R.id.txtNombre);
+            precio = v.findViewById(R.id.txtPrecio);
+            sesiones = v.findViewById(R.id.txtSesiones);
+
 
         }
     }

@@ -1,5 +1,7 @@
 package com.guillermo.cinesAragonApp.listaPeliculas.view;
 
+import android.app.SearchManager;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
@@ -7,7 +9,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.CompoundButton;
-import android.widget.EditText;
+import android.widget.SearchView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -49,6 +51,7 @@ public class ListaPeliculas extends AppCompatActivity implements ContratoListaPe
         setToolbar();
         filtrado();
         ordenVotos();
+        filtradoPorPalabra();
     }
 
     @Override
@@ -103,9 +106,30 @@ public class ListaPeliculas extends AppCompatActivity implements ContratoListaPe
     }
 
     public void filtradoPorPalabra() {
-        EditText filtradoTexto = (EditText) navigationView.getMenu().findItem(R.id.menu3).getActionView();
-        String texto = String.valueOf(filtradoTexto.getText());
-        presentadorListaPeliculas.getPeliculasFiltroTexto(texto);
+        SearchView filtradoTexto = (SearchView) navigationView.getMenu().findItem(R.id.menu3).getActionView();
+//        String texto = String.valueOf(filtradoTexto.getQuery());
+//        presentadorListaPeliculas.getPeliculasByTitulo(texto);
+
+        filtradoTexto.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                presentadorListaPeliculas.getPeliculasByTitulo(query);
+                return true;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                presentadorListaPeliculas.getPeliculasByTitulo(newText);
+                return false;
+            }
+        });
+
+        Intent intent = getIntent();
+        if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
+            String query = intent.getStringExtra(SearchManager.QUERY);
+            presentadorListaPeliculas.getPeliculasByTitulo(query);
+        }
+
 
     }
 
@@ -152,19 +176,19 @@ public class ListaPeliculas extends AppCompatActivity implements ContratoListaPe
         actionBarDrawerToggle.syncState();
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-
-        switch (item.getItemId()) {
-            case R.id.menu1:
-                ordenVotos();
-                return true;
-            case R.id.menu3:
-                filtradoPorPalabra();
-                return true;
-            default:
-                return super.onOptionsItemSelected(item);
-        }
-    }
+//    @Override
+//    public boolean onOptionsItemSelected(MenuItem item) {
+//
+//        switch (item.getItemId()) {
+//            case R.id.menu1:
+//                ordenVotos();
+//                return true;
+//            case R.id.menu3:
+//                filtradoPorPalabra();
+//                return true;
+//            default:
+//                return super.onOptionsItemSelected(item);
+//        }
+//    }
 
 }

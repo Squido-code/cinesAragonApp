@@ -15,9 +15,9 @@ public interface ContratoListaPeliculas {
     interface Presenter {
         void getPeliculas(Boolean isFiltrado);
 
-        void getPeliculasFiltroTexto(String filtro);
-
         void getPeliculasOrdenVoto();
+
+        void getPeliculasByTitulo(String titulo);
 
     }
 
@@ -26,7 +26,7 @@ public interface ContratoListaPeliculas {
 
         void getPeliculasfilterWS(OnLstPeliculasListener onLstPeliculasListener, String filtro);
 
-        void getPeliculasTextoWS(OnLstPeliculasListener onLstPeliculasListener, String filtro);
+        void getPeliculasByTituloWS(OnLstPeliculasListener onLstPeliculasListener, String titulo);
 
         void getPeliculasOrdenWS(OnLstPeliculasListener onLstPeliculasListener);
 

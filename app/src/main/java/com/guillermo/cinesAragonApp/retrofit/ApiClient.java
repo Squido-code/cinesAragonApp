@@ -37,4 +37,8 @@ public class ApiClient {
     public Call<List<Pelicula>> getPeliculasOrden() {
         return service.getPeliculasOrden();
     }
+
+    public Call<List<Pelicula>> getPeliculasByTitle(String string) {
+        return service.getPeliculasByTitulo(string);
+    }
 }

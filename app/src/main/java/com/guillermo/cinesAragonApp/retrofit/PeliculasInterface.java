@@ -1,7 +1,6 @@
 package com.guillermo.cinesAragonApp.retrofit;
 
 
-import com.guillermo.cinesAragonApp.beans.Horarios;
 import com.guillermo.cinesAragonApp.beans.Pelicula;
 
 import java.util.List;
@@ -22,10 +21,7 @@ public interface PeliculasInterface {
     Call<List<Pelicula>> getPeliculasByGenero(@Path("id") String id);
 
     @GET("pelicula")
-    Call<Pelicula> getPeliculasByTitulo(@Query("titulo") String titulo);
-
-    @GET("sesiones/{id}")
-    Call<List<Horarios>> getSesiones(@Path("id") String id);
+    Call<List<Pelicula>> getPeliculasByTitulo(@Query("titulo") String titulo);
 
     @GET("orden")
     Call<List<Pelicula>> getPeliculasOrden();

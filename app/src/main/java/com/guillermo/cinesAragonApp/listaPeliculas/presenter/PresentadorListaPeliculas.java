@@ -15,13 +15,13 @@ import lombok.Data;
 @Data
 public class PresentadorListaPeliculas implements ContratoListaPeliculas.Presenter {
     private static final String TAG = PresentadorListaPeliculas.class.getSimpleName();
-    private final ModelListaPeliculas modelListaVideojuegos;
+    private final ModelListaPeliculas modelListaPeliculas;
     private final ContratoListaPeliculas.View vista;
     private String filtro;
 
     public PresentadorListaPeliculas(Context context, ContratoListaPeliculas.View vista) {
         this.vista = vista;
-        modelListaVideojuegos = new ModelListaPeliculas(context);
+        modelListaPeliculas = new ModelListaPeliculas(context);
     }
 
     @Override
@@ -35,11 +35,11 @@ public class PresentadorListaPeliculas implements ContratoListaPeliculas.Present
         filtroId.put("Ciencia ficcion", "4");
         if (isFiltrado) {
             Log.d(TAG, "[getPeliculas] isFiltrado");
-            modelListaVideojuegos.getPeliculasfilterWS(new ContratoListaPeliculas.Model.OnLstPeliculasListener() {
+            modelListaPeliculas.getPeliculasfilterWS(new ContratoListaPeliculas.Model.OnLstPeliculasListener() {
                 @Override
-                public void onResolve(ArrayList<Pelicula> juegos) {
+                public void onResolve(ArrayList<Pelicula> peliculas) {
                     Log.d(TAG, "[getJuegos] onResolve");
-                    vista.success(juegos);
+                    vista.success(peliculas);
                 }
 
                 @Override
@@ -50,12 +50,12 @@ public class PresentadorListaPeliculas implements ContratoListaPeliculas.Present
             }, filtroId.get(filtro));
         } else {
             Log.d(TAG, "[getPeliculasWS]");
-            modelListaVideojuegos.getPeliculasWS(new ContratoListaPeliculas.Model.OnLstPeliculasListener() {
+            modelListaPeliculas.getPeliculasWS(new ContratoListaPeliculas.Model.OnLstPeliculasListener() {
 
                 @Override
-                public void onResolve(ArrayList<Pelicula> juegos) {
+                public void onResolve(ArrayList<Pelicula> peliculas) {
                     Log.d(TAG, "[getPeliculasWS] onResolve");
-                    vista.success(juegos);
+                    vista.success(peliculas);
                 }
 
                 @Override
@@ -68,18 +68,13 @@ public class PresentadorListaPeliculas implements ContratoListaPeliculas.Present
     }
 
     @Override
-    public void getPeliculasFiltroTexto(String filtro) {
-
-    }
-
-    @Override
     public void getPeliculasOrdenVoto() {
         Log.d(TAG, "[getPeliculasOrdenVoto]");
-        modelListaVideojuegos.getPeliculasOrdenWS(new ContratoListaPeliculas.Model.OnLstPeliculasListener() {
+        modelListaPeliculas.getPeliculasOrdenWS(new ContratoListaPeliculas.Model.OnLstPeliculasListener() {
             @Override
-            public void onResolve(ArrayList<Pelicula> juegos) {
+            public void onResolve(ArrayList<Pelicula> peliculas) {
                 Log.d(TAG, "[getPeliculasOrdenVoto] onResolve");
-                vista.success(juegos);
+                vista.success(peliculas);
             }
 
             @Override
@@ -88,6 +83,44 @@ public class PresentadorListaPeliculas implements ContratoListaPeliculas.Present
                 vista.error("Error al tratar los datos ");
             }
         });
+    }
+
+    @Override
+    public void getPeliculasByTitulo(String titulo) {
+        Log.d(TAG, "[getPeliculasByTituloWS]");
+        if (titulo.isEmpty()) {
+            Log.d(TAG, "[getPeliculasByTitulo] " + titulo.isEmpty());
+            modelListaPeliculas.getPeliculasWS(new ContratoListaPeliculas.Model.OnLstPeliculasListener() {
+
+                @Override
+                public void onResolve(ArrayList<Pelicula> peliculas) {
+                    Log.d(TAG, "[getPeliculasWS] onResolve");
+                    vista.success(peliculas);
+                }
+
+                @Override
+                public void onReject(String error) {
+                    Log.d(TAG, "[getPeliculasWS] onResolve");
+                    vista.error("Error al tratar los datos");
+                }
+            });
+        } else {
+            Log.d(TAG, "[getPeliculasByTitulo] " + titulo.isEmpty());
+            modelListaPeliculas.getPeliculasByTituloWS(new ContratoListaPeliculas.Model.OnLstPeliculasListener() {
+                @Override
+                public void onResolve(ArrayList<Pelicula> peliculas) {
+                    Log.d(TAG, "[getPeliculasByTituloWS] onResolve");
+                    vista.success(peliculas);
+                }
+
+                @Override
+                public void onReject(String error) {
+                    Log.d(TAG, "[getPeliculasByTituloWS] onReject " + error);
+                    vista.error("Error al tratar los datos ");
+                }
+            }, titulo);
+        }
+
     }
 
 }

@@ -13,5 +13,7 @@ public class Ficha {
     private String duracion;
     private String fecha_Estreno;
     private String genero;
+    private String web;
+    private String votos;
 
 }

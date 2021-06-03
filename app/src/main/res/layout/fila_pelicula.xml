@@ -38,15 +38,41 @@
             android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
             android:layout_alignParentBottom="true"
-            android:layout_marginStart="3dp"
-            android:layout_marginTop="50dp"
-            android:layout_marginEnd="6dp"
-            android:layout_marginBottom="51dp"
+            android:layout_marginStart="2dp"
+            android:layout_marginTop="23dp"
+            android:layout_marginEnd="7dp"
+            android:layout_marginBottom="78dp"
             android:layout_toEndOf="@+id/imagenPelicula"
             android:text="Name"
             android:textAlignment="center"
             android:textColor="@android:color/black"
             android:textSize="@dimen/row_textView_TextSize"
             android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/txtPrecio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/txtSesiones"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="64dp"
+            android:layout_marginEnd="118dp"
+            android:layout_marginBottom="5dp"
+            android:layout_toEndOf="@+id/imagenPelicula"
+            android:layout_weight="1"
+            android:text="precio" />
+
+        <TextView
+            android:id="@+id/txtSesiones"
+            android:layout_width="196dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="64dp"
+            android:layout_marginEnd="12dp"
+            android:layout_marginBottom="10dp"
+            android:layout_toEndOf="@+id/imagenPelicula"
+            android:layout_weight="1"
+            android:text="sesiones" />
     </RelativeLayout>
 </com.google.android.material.card.MaterialCardView>
