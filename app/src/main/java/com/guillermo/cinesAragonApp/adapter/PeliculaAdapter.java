@@ -54,6 +54,7 @@ public class PeliculaAdapter extends RecyclerView.Adapter<PeliculaAdapter.Pelicu
             bundle.putString("duracion", pelicula.getDuracion());
             bundle.putString("fecha_Estreno", pelicula.getFecha_Estreno());
             bundle.putString("genero", pelicula.getGenero());
+            bundle.putString("trailer", pelicula.getTrailer());
             intent.putExtras(bundle);
             context.startActivity(intent);
         });

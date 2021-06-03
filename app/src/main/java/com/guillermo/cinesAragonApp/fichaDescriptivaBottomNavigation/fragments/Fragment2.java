@@ -9,17 +9,23 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
-import com.google.android.youtube.player.YouTubePlayerFragment;
+import com.google.android.youtube.player.YouTubeInitializationResult;
+import com.google.android.youtube.player.YouTubePlayer;
+import com.google.android.youtube.player.YouTubePlayerSupportFragment;
 import com.guillermo.cinesAragonApp.R;
 import com.guillermo.cinesAragonApp.beans.Ficha;
+
+import static com.guillermo.cinesAragonApp.utils.Constants.YOUTUBEAPIKEY;
+
 
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link Fragment2#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class Fragment2 extends YouTubePlayerFragment {
+public class Fragment2 extends Fragment {
     private Ficha ficha;
 
     public Fragment2() {
@@ -49,14 +55,45 @@ public class Fragment2 extends YouTubePlayerFragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        TextView rellenoDatos = getView().findViewById(R.id.datosTecnicos);
-        TextView web = getView().findViewById(R.id.web);
+        getinfo();
+        getYoutubePlayer();
 
+    }
+
+    private void getinfo() {
+        TextView rellenoDatos = getView().findViewById(R.id.datosTecnicos);
         String datos = "Duracion: " + ficha.getDuracion() + " minutos" + "\n" +
                 "Fecha de estreno: " + ficha.getFecha_Estreno() + "\n" +
                 "Votos: " + ficha.getVotos();
         rellenoDatos.setText(datos);
-        web.setText(ficha.getWeb());
+    }
+
+    private void getYoutubePlayer() {
+
+        YouTubePlayerSupportFragment youTubePlayerFragment = YouTubePlayerSupportFragment.newInstance();
+
+        youTubePlayerFragment.initialize(YOUTUBEAPIKEY, new YouTubePlayer.OnInitializedListener() {
+
+            @Override
+            public void onInitializationSuccess(YouTubePlayer.Provider arg0, YouTubePlayer youTubePlayer, boolean b) {
+                if (!b) {
+                    youTubePlayer.setFullscreen(false);
+                    youTubePlayer.loadVideo("w7pYhpJaJW8");
+                    youTubePlayer.play();
+                }
+            }
+
+            @Override
+            public void onInitializationFailure(YouTubePlayer.Provider arg0, YouTubeInitializationResult arg1) {
+                // TODO Auto-generated method stub
+
+            }
+        });
+        FragmentTransaction transaction = getFragmentManager().beginTransaction();
+        transaction.replace(R.id.youTubeview, youTubePlayerFragment);
+        transaction.commit();
+
+
     }
 
     public void setFicha(Ficha ficha) {

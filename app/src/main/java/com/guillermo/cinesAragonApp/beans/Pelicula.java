@@ -15,6 +15,7 @@ public class Pelicula {
     private String cartel;
     private String votos;
     private String genero;
+    private String trailer;
     private ArrayList<Horarios> horarios;
 
     public String horariosToString() {
