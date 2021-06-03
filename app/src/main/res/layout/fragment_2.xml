@@ -24,10 +24,18 @@
         <TextView
             android:id="@+id/datosTecnicos"
             android:layout_width="match_parent"
-            android:layout_height="300dp"
+            android:layout_height="81dp"
             android:layout_marginTop="100dp"
             android:layout_marginEnd="5dp"
-            android:layout_marginBottom="400dp"
+            android:textAlignment="center" />
+
+        <TextView
+            android:id="@+id/web"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="5dp"
+            android:layout_marginBottom="10dp"
+            android:autoLink="web"
             android:textAlignment="center" />
 
     </LinearLayout>

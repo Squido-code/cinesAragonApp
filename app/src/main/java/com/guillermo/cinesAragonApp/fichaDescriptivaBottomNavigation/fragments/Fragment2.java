@@ -49,11 +49,12 @@ public class Fragment2 extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         TextView rellenoDatos = getView().findViewById(R.id.datosTecnicos);
+        TextView web = getView().findViewById(R.id.web);
 
         String datos = "Nota Metacritics: " + ficha.getDuracion() + "\n" +
-                "Fecha de estreno: " + ficha.getFecha_Estreno() + "\n" +
-                "Website: " + ficha.getGenero();
+                "Fecha de estreno: " + ficha.getFecha_Estreno();
         rellenoDatos.setText(datos);
+        web.setText(ficha.getGenero());
     }
 
     public void setFicha(Ficha ficha) {
