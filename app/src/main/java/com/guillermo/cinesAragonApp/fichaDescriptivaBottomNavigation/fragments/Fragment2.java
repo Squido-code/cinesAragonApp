@@ -10,6 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.google.android.youtube.player.YouTubePlayerFragment;
 import com.guillermo.cinesAragonApp.R;
 import com.guillermo.cinesAragonApp.beans.Ficha;
 
@@ -18,7 +19,7 @@ import com.guillermo.cinesAragonApp.beans.Ficha;
  * Use the {@link Fragment2#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class Fragment2 extends Fragment {
+public class Fragment2 extends YouTubePlayerFragment {
     private Ficha ficha;
 
     public Fragment2() {
