@@ -14,7 +14,7 @@
 
             <item
                 android:id="@+id/menu3"
-                android:title="buscar título:"
+                android:title="@string/buscar_t_tulo"
                 app:actionViewClass="android.widget.SearchView"
                 app:showAsAction="always" />
         </menu>

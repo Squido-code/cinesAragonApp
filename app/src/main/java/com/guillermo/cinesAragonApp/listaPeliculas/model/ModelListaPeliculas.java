@@ -22,7 +22,7 @@ public class ModelListaPeliculas
     private final Context context;
 
     @Override
-    public void getPeliculasWS(OnLstJuegosListener onLstJuegosListener) {
+    public void getPeliculasWS(OnLstPeliculasListener onLstPeliculasListener) {
         Log.d(TAG, "[getjuegosWS]");
         ApiClient apiClient = new ApiClient(context);
         final Call<List<Pelicula>> batch = apiClient.getPeliculas();
@@ -32,7 +32,7 @@ public class ModelListaPeliculas
             public void onResponse(Call<List<Pelicula>> call, Response<List<Pelicula>> response) {
                 Log.d(TAG, "[getPeliculasWS] onResponse");
                 if (response != null && response.body() != null) {
-                    onLstJuegosListener.onResolve(new ArrayList<Pelicula>(response.body()));
+                    onLstPeliculasListener.onResolve(new ArrayList<Pelicula>(response.body()));
                 }
             }
 
@@ -40,13 +40,13 @@ public class ModelListaPeliculas
             public void onFailure(Call<List<Pelicula>> call, Throwable t) {
                 Log.d(TAG, "[getPeliculasWS] onFailure");
                 t.printStackTrace();
-                onLstJuegosListener.onReject(t.getLocalizedMessage());
+                onLstPeliculasListener.onReject(t.getLocalizedMessage());
             }
         });
     }
 
     @Override
-    public void getPeliculasfilterWS(OnLstJuegosListener onLstJuegosListener, String filtro) {
+    public void getPeliculasfilterWS(OnLstPeliculasListener onLstPeliculasListener, String filtro) {
         Log.d(TAG, "[getPeliculasfilterWS]");
         ApiClient apiClient = new ApiClient(context);
         final Call<List<Pelicula>> batch = apiClient.getPeliculasFiltered(filtro);
@@ -54,13 +54,38 @@ public class ModelListaPeliculas
             @Override
             public void onResponse(Call<List<Pelicula>> call, Response<List<Pelicula>> response) {
                 Log.d(TAG, "[getPeliculasfilterWS] onResponse");
-                onLstJuegosListener.onResolve(new ArrayList<Pelicula>(response.body()));
+                onLstPeliculasListener.onResolve(new ArrayList<Pelicula>(response.body()));
             }
 
             @Override
             public void onFailure(Call<List<Pelicula>> call, Throwable t) {
                 Log.d(TAG, "[getPeliculasfilterWS] onFailure");
-                onLstJuegosListener.onReject(t.getLocalizedMessage());
+                onLstPeliculasListener.onReject(t.getLocalizedMessage());
+            }
+        });
+    }
+
+    @Override
+    public void getPeliculasTextoWS(OnLstPeliculasListener onLstPeliculasListener, String filtro) {
+
+    }
+
+    @Override
+    public void getPeliculasOrdenWS(OnLstPeliculasListener onLstPeliculasListener) {
+        Log.d(TAG, "[getPeliculasOrdenWS]");
+        ApiClient apiClient = new ApiClient(context);
+        final Call<List<Pelicula>> batch = apiClient.getPeliculasOrden();
+        batch.enqueue(new Callback<List<Pelicula>>() {
+            @Override
+            public void onResponse(Call<List<Pelicula>> call, Response<List<Pelicula>> response) {
+                Log.d(TAG, "[getPeliculasOrdenWS] onResponse");
+                onLstPeliculasListener.onResolve(new ArrayList<Pelicula>(response.body()));
+            }
+
+            @Override
+            public void onFailure(Call<List<Pelicula>> call, Throwable t) {
+                Log.d(TAG, "[getPeliculasOrdenWS] onFailure");
+                onLstPeliculasListener.onReject(t.getLocalizedMessage());
             }
         });
     }

@@ -34,8 +34,7 @@ public class ApiClient {
         return service.getPeliculasByGenero(genre);
     }
 
-//    public Call<Ficha> getFicha(String id) {
-//        PeliculasInterface service = retrofit.create(PeliculasInterface.class);
-//        return service.getficha(id, API_KEY);
-//    }
+    public Call<List<Pelicula>> getPeliculasOrden() {
+        return service.getPeliculasOrden();
+    }
 }

@@ -74,19 +74,6 @@ public class ListaBaseFragment extends AppCompatActivity {
         transaction.commit();
     }
 
-//    @Override
-//    public void success(Ficha ficha) {
-//        this.ficha = ficha;
-//        fragment1 = Fragment1.newInstance(ficha);
-//        fragment2 = Fragment2.newInstance(ficha);
-//        showFragment1();
-//    }
-//
-//    @Override
-//    public void error(String mensage) {
-//        Toast.makeText(this, "error al mostrar los datos", Toast.LENGTH_SHORT).show();
-//    }
-
     private void getIncomingIntent() {
         Intent intent = getIntent();
         Bundle extras = getIntent().getExtras();

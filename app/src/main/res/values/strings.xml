@@ -11,4 +11,5 @@
     <string name="filtro_por_genero">género:</string>
     <string name="drawer_opened">abierto</string>
     <string name="drawer_closed">cerrado</string>
+    <string name="buscar_t_tulo">buscar título:</string>
 </resources>

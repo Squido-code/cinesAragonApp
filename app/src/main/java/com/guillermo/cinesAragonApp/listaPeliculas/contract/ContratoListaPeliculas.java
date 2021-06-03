@@ -15,15 +15,23 @@ public interface ContratoListaPeliculas {
     interface Presenter {
         void getPeliculas(Boolean isFiltrado);
 
+        void getPeliculasFiltroTexto(String filtro);
+
+        void getPeliculasOrdenVoto();
+
     }
 
     interface Model {
-        void getPeliculasWS(OnLstJuegosListener onLstJuegosListener);
+        void getPeliculasWS(OnLstPeliculasListener onLstPeliculasListener);
 
-        void getPeliculasfilterWS(OnLstJuegosListener onLstJuegosListener, String filtro);
+        void getPeliculasfilterWS(OnLstPeliculasListener onLstPeliculasListener, String filtro);
+
+        void getPeliculasTextoWS(OnLstPeliculasListener onLstPeliculasListener, String filtro);
+
+        void getPeliculasOrdenWS(OnLstPeliculasListener onLstPeliculasListener);
 
         /*Reactivo*/
-        interface OnLstJuegosListener {
+        interface OnLstPeliculasListener {
             void onResolve(ArrayList<Pelicula> juegos);
 
             void onReject(String error);

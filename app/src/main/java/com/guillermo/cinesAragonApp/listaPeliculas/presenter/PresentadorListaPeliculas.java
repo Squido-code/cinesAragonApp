@@ -10,6 +10,9 @@ import com.guillermo.cinesAragonApp.listaPeliculas.model.ModelListaPeliculas;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import lombok.Data;
+
+@Data
 public class PresentadorListaPeliculas implements ContratoListaPeliculas.Presenter {
     private static final String TAG = PresentadorListaPeliculas.class.getSimpleName();
     private final ModelListaPeliculas modelListaVideojuegos;
@@ -26,13 +29,13 @@ public class PresentadorListaPeliculas implements ContratoListaPeliculas.Present
         Log.d(TAG, "[getPeliculas]");
         //creamos hasmap para connvertir el filtro en una id entendible para la API
         HashMap<String, String> filtroId = new HashMap<>();
-        filtroId.put("acción", "1");
-        filtroId.put("aventura", "2");
+        filtroId.put("Acción", "1");
+        filtroId.put("Aventura", "2");
         filtroId.put("Terror", "3");
         filtroId.put("Ciencia ficcion", "4");
         if (isFiltrado) {
             Log.d(TAG, "[getPeliculas] isFiltrado");
-            modelListaVideojuegos.getPeliculasfilterWS(new ContratoListaPeliculas.Model.OnLstJuegosListener() {
+            modelListaVideojuegos.getPeliculasfilterWS(new ContratoListaPeliculas.Model.OnLstPeliculasListener() {
                 @Override
                 public void onResolve(ArrayList<Pelicula> juegos) {
                     Log.d(TAG, "[getJuegos] onResolve");
@@ -47,7 +50,7 @@ public class PresentadorListaPeliculas implements ContratoListaPeliculas.Present
             }, filtroId.get(filtro));
         } else {
             Log.d(TAG, "[getPeliculasWS]");
-            modelListaVideojuegos.getPeliculasWS(new ContratoListaPeliculas.Model.OnLstJuegosListener() {
+            modelListaVideojuegos.getPeliculasWS(new ContratoListaPeliculas.Model.OnLstPeliculasListener() {
 
                 @Override
                 public void onResolve(ArrayList<Pelicula> juegos) {
@@ -64,11 +67,27 @@ public class PresentadorListaPeliculas implements ContratoListaPeliculas.Present
         }
     }
 
-    public String getFiltro() {
-        return filtro;
+    @Override
+    public void getPeliculasFiltroTexto(String filtro) {
+
     }
 
-    public void setFiltro(String filtro) {
-        this.filtro = filtro;
+    @Override
+    public void getPeliculasOrdenVoto() {
+        Log.d(TAG, "[getPeliculasOrdenVoto]");
+        modelListaVideojuegos.getPeliculasOrdenWS(new ContratoListaPeliculas.Model.OnLstPeliculasListener() {
+            @Override
+            public void onResolve(ArrayList<Pelicula> juegos) {
+                Log.d(TAG, "[getPeliculasOrdenVoto] onResolve");
+                vista.success(juegos);
+            }
+
+            @Override
+            public void onReject(String error) {
+                Log.d(TAG, "[getPeliculasOrdenVoto] onReject " + error);
+                vista.error("Error al tratar los datos ");
+            }
+        });
     }
+
 }
