@@ -82,9 +82,10 @@ public class ListaBaseFragment extends AppCompatActivity {
                     .sinopsis(extras.getString("sinopsis"))
                     .cartel(extras.getString("cartel"))
                     .duracion(extras.getString("duracion"))
-                    .fecha_Estreno(extras.getString("fecha_Estreno"))
+                    .fecha_Estreno(extras.getString("fecha_estreno"))
                     .genero(extras.getString("genero"))
                     .trailer(extras.getString("trailer"))
+                    .votos(extras.getString("votos"))
                     .build();
         }
     }

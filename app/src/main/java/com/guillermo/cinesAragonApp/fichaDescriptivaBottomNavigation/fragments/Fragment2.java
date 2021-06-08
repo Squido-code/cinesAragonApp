@@ -78,7 +78,7 @@ public class Fragment2 extends Fragment {
             public void onInitializationSuccess(YouTubePlayer.Provider arg0, YouTubePlayer youTubePlayer, boolean b) {
                 if (!b) {
                     youTubePlayer.setFullscreen(false);
-                    youTubePlayer.loadVideo("w7pYhpJaJW8");
+                    youTubePlayer.loadVideo(ficha.getTrailer());
                     youTubePlayer.play();
                 }
             }

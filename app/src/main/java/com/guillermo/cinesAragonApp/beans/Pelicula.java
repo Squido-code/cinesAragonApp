@@ -9,7 +9,7 @@ public class Pelicula {
     private String id;
     private String titulo;
     private String sinopsis;
-    private String fecha_Estreno;
+    private String fecha_estreno;
     private String duracion;
     private String precio;
     private String cartel;
