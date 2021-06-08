@@ -18,6 +18,14 @@ import com.guillermo.cinesAragonApp.fichaDescriptivaBottomNavigation.fragments.F
 public class ListaBaseFragment extends AppCompatActivity {
 
     private static final String TAG = ListaBaseFragment.class.getSimpleName();
+    private static final String ARG_EXTRAS_TITULO = "nombre";
+    private static final String ARG_EXTRAS_SINOPSIS = "sinopsis";
+    private static final String ARG_EXTRAS_CARTEL = "cartel";
+    private static final String ARG_EXTRAS_DURACION = "duracion";
+    private static final String ARG_EXTRAS_ESTRENO = "fecha_estreno";
+    private static final String ARG_EXTRAS_GENERO = "genero";
+    private static final String ARG_EXTRAS_TRAILER = "trailer";
+    private static final String ARG_EXTRAS_VOTOS = "votos";
 
     private BottomNavigationView mBottomNavigationView;
 
@@ -78,14 +86,14 @@ public class ListaBaseFragment extends AppCompatActivity {
         Intent intent = getIntent();
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
-            ficha = Ficha.builder().nombre(extras.getString("nombre"))
-                    .sinopsis(extras.getString("sinopsis"))
-                    .cartel(extras.getString("cartel"))
-                    .duracion(extras.getString("duracion"))
-                    .fecha_Estreno(extras.getString("fecha_estreno"))
-                    .genero(extras.getString("genero"))
-                    .trailer(extras.getString("trailer"))
-                    .votos(extras.getString("votos"))
+            ficha = Ficha.builder().nombre(extras.getString(ARG_EXTRAS_TITULO))
+                    .sinopsis(extras.getString(ARG_EXTRAS_SINOPSIS))
+                    .cartel(extras.getString(ARG_EXTRAS_CARTEL))
+                    .duracion(extras.getString(ARG_EXTRAS_DURACION))
+                    .fecha_Estreno(extras.getString(ARG_EXTRAS_ESTRENO))
+                    .genero(extras.getString(ARG_EXTRAS_GENERO))
+                    .trailer(extras.getString(ARG_EXTRAS_TRAILER))
+                    .votos(extras.getString(ARG_EXTRAS_VOTOS))
                     .build();
         }
     }

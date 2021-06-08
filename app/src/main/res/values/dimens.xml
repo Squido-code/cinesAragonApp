@@ -12,4 +12,6 @@
     <dimen name="row_textView_TextSize">20sp</dimen>
     <dimen name="row_card_CornerRadius">12dp</dimen>
     <dimen name="row_card_cardElevation">4dp</dimen>
+    <dimen name="general_Padding">16dp</dimen>
+    <dimen name="Bottom_Navigation_Height">50dp</dimen>
 </resources>

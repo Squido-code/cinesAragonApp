@@ -13,4 +13,5 @@
     <string name="drawer_closed">cerrado</string>
     <string name="buscar_t_tulo">buscar título:</string>
     <string name="trailer">Trailer</string>
+    <string name="tituloFragment1">Sinopsis</string>
 </resources>

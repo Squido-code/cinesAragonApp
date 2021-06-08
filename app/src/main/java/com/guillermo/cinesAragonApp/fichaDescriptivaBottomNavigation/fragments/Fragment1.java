@@ -9,6 +9,7 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 
 import com.guillermo.cinesAragonApp.R;
@@ -59,8 +60,8 @@ public class Fragment1 extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        TextView tvNombreFicha = getView().findViewById(R.id.nombreFragment);
-        tvNombreFicha.setText(ficha.getNombre());
+        Toolbar tvNombreFicha = getView().findViewById(R.id.nombreFragment);
+        tvNombreFicha.setTitle(ficha.getNombre());
         TextView tvDescripcionFicha = getView().findViewById(R.id.descriptionFragment);
         tvDescripcionFicha.setText(ficha.getSinopsis());
         ImageView ivFicha = getView().findViewById(R.id.imagenFragment);
